@@ -12,13 +12,27 @@
 <body>
 
 
+  <span>
+    <img style="width:300px;" src="images/logo.png" alt="">
+    <p>Welcome to dark souls themed memory game!</p>
+    <p>Rules are simple.</p>
+    <ul>
+      <li>Pick one card</li>
+      <li>Then pick another card</li>
+      <li>If they are not same the cards will turn</li>
+      <li>If they are same, continue!</li>
+    </ul>
+    <button id="start-btn" onclick="startGame()">START</button>
+    <p style="margin: 15px;">REMEMBER! After choosing two cards, wait for the cards to turn(Pick max 2 cards at one move), otherwise game will refresh</p>
+  </span>
 
-  <main>
+  <main style="display: none;">
     <!-- Main container -->
     <nav>
       <p id="moves">0 moves</p>
+      <p id="time">Time:</p>
       <p id="score">Score: </p>
-      <button id="refresh-btn" onclick="refresh()">Refresh</button>
+      <button  id="refresh-btn" onclick="refresh()">Refresh</button>
     </nav>
     <section>
       <!-- Game Table -->
