@@ -1,0 +1,96 @@
+body{
+  display: flex;
+  flex-direction: column;
+  font-family: 'Arvo', serif;
+  padding: 0;
+  align-items: center;
+  justify-self: center;
+  background-image: url(images/High_resolution_wallpaper_background_ID_77700689836.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+p{
+  margin: 0;
+  color: white;
+  font-size: 25px;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  width: 920px;
+  border-radius: 12px;
+  background-color: #11121b;
+  height: 600px;
+  margin-top: 50px;
+}
+section{
+  align-self: stretch;
+  margin: 40px;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows:1fr 1fr 1fr 1fr;
+}
+div{
+  position: relative;
+  background-color: rgb(39, 50, 53);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 150px;
+  
+}
+figure{
+  position: absolute;
+}
+nav{
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  margin-left: 40px;
+  margin-right: 40px;
+  justify-content: space-between;
+}
+button{
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  background-color: black;
+  border-radius: 12px;
+  cursor: pointer;
+  color: white;
+}
+.card-img{
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+.card{
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+.refresh-png{
+  width: 45px;
+}
+
+@media screen and (max-width: 430px) {
+  body{
+    background-color: black;
+  }
+  main {
+    width: 400px;
+  }
+  p{
+    font-size: 20px;
+  }
+  .card,
+  .card-img{
+    width: 75px;
+    height: 75px;
+  }
+}
