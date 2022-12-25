@@ -25,6 +25,19 @@ main{
   height: 600px;
   margin-top: 50px;
 }
+article{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 920px;
+  border-radius: 12px;
+  background-color: #11121b;
+  height: 600px;
+  margin-top: 50px;
+  display: none;
+}
 section{
   align-self: stretch;
   margin: 40px;
@@ -33,7 +46,10 @@ section{
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows:1fr 1fr 1fr 1fr;
 }
-div{
+
+
+
+.card-container{
   position: relative;
   background-color: rgb(39, 50, 53);
   border-radius: 8px;
@@ -42,11 +58,12 @@ div{
   justify-content: center;
   cursor: pointer;
   height: 150px;
-  
 }
+
 figure{
   position: absolute;
 }
+
 nav{
   display: flex;
   align-items: center;
@@ -64,6 +81,19 @@ nav{
   border-radius: 12px;
   cursor: pointer;
   color: white;
+}
+
+#play-again{
+  padding: 20px 120px;
+  border-radius: 10px;
+  font-size: 20px;
+  color: white;
+  background:#000000;
+  font-weight: bold;
+  margin-bottom: 50px;
+  margin-top: 40px;
+  cursor: pointer;
+  border: none;
 }
 
 .card-img{
@@ -106,23 +136,52 @@ text-align: start;
   cursor: pointer;
   border: none;
 }
+#mute,
+#volume{
+  width: 30px;
+}
+.mute-container{
+  position: relative;
+  cursor: pointer;
+}
+.volume-container{
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
 
 @media screen and (max-width: 430px) {
   body{
     background-color: black;
   }
   main,
+  article,
   span {
-    width: 400px;
+    width: 350px;
+  }
+  nav{
+    margin-left: 10px;
+    margin-right: 10px;
   }
   p,
   li{
-    font-size: 20px;
+    font-size: 18px;
   }
-  .card,
+  section{
+    margin: 15px;
+    margin-top: 35px;
+    max-width: 320px;
+  }
+  .card{
+    width: 80px;
+    height: 80px;
+  }
   .card-img{
-    width: 75px;
-    height: 75px;
+    width: 60px;
+    height: 60px;
   }
   #start-btn {
     margin-bottom: 15px;

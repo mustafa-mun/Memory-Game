@@ -1,11 +1,17 @@
 const mainContainer = document.querySelector('main');
 const startContainer = document.querySelector('span');
+const finishContainer = document.querySelector('article');
 const movesEl = document.getElementById('moves');
 const refreshBtn = document.getElementById('refresh-btn');
 const scoreEl = document.getElementById('score');
 const startBtn = document.getElementById('start-btn');
-const timeEl = document.getElementById('time');
-const divs = document.querySelectorAll('div'); // All divs
+const divs = document.getElementsByClassName('card-container'); // All divs
+const song = document.getElementById('song');
+const movesResult = document.getElementById('moves-result');
+const volumeIconContainer = document.getElementById('volume-container');
+const muteIconContainer = document.getElementById('mute-container');
+const volumeIcon = document.getElementById('volume');
+const muteIcon = document.getElementById('mute')
 
 const src = [ // Images src array
   "images/pic1.png",
@@ -29,47 +35,30 @@ let score = 0;
 let clickCount = 0;
 
 
-
+let volumeLoop = 1
+muteIconContainer.addEventListener('click',()=>{ // Pause or Play the plin plin plon
+  console.log("clicked");
+  volumeLoop++
+  if(volumeLoop%2 === 0){
+    song.pause();
+    muteIcon.style.visibility = 'hidden'
+    volumeIcon.style.display = 'block'
+  } else{
+    song.play();
+    muteIcon.style.visibility = 'inherit';
+    volumeIcon.style.display = "none"
+  }
+})
 
 
 for(let i = 0; i < divs.length; i++) { // Loop the cards(divs)
 
-  divs[i].addEventListener('click',function(){ // Add event listener to every card
+  divs[i].addEventListener('click', () =>{ // Add event listener to every card
+
 
    turnCardFront(divs[i],src[i]); // Turn the cards front side
 
     clickCount++
-
-    if(clickCount === 1) {
-      // Set up a variable to keep track of the elapsed time
-        let elapsedTime = 0;
-
-        // Function to update the timer display
-        function updateTimer() {
-          // Increment the elapsed time
-          elapsedTime++;
-
-          // Format the timer display
-          let display = pad(elapsedTime % 60);
-          display = pad(Math.floor(elapsedTime / 60)) + ":" + display;
-
-          // Update the timer display element
-          timeEl.innerHTML = `Time: ${display}`;
-          if(score === 6) {
-            clearInterval(timer)
-          }
-        }
-
-        // Start the timer
-        let timer = setInterval(updateTimer, 1000);
-
-        // Function to pad a number with leading zeros
-        function pad(num) {
-          return (num < 10 ? "0" : "") + num;
-        }
-
-    }
-
 
     if(clickCount%2 === 0) { // If player chooses 2 cards, moves + 1
       moves++; // Moves count
@@ -99,6 +88,13 @@ for(let i = 0; i < divs.length; i++) { // Loop the cards(divs)
       refresh();
       movesEl.textContent = 'PICK 2 CARDS MAX AT ONE MOVE'
     }
+
+    if(score === 6){ // When player finishes game 
+      startContainer.style.display = "none";
+      mainContainer.style.display = "none";
+      finishContainer.style.display = "flex";
+      movesResult.textContent += `${moves} moves`
+    } 
     
   })
 
@@ -106,17 +102,18 @@ for(let i = 0; i < divs.length; i++) { // Loop the cards(divs)
 
 
 
-const shuffleArray = (array) => { // Shuffle array function (Study This)
+const shuffleArray = (array) => { // Shuffle array function 
   for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
   }
 }
-shuffleArray(src); // Shuffle the array
+shuffleArray(src); // Shuffle the src array
 
 
 const startGame =() => { // Start game functipn
-  
+  song.play()
+  song.volume = 0.2
   startContainer.style.display = 'none';
   mainContainer.style.display = 'flex'
 
@@ -157,4 +154,11 @@ const refresh = () => { // Refresh Function
   }
   shuffleArray(src);
   console.clear()
+}
+
+const playAgain = () => {// Play again function
+  refresh();
+  startContainer.style.display = 'flex';
+  mainContainer.style.display = 'none';
+  finishContainer.style.display = 'none';
 }

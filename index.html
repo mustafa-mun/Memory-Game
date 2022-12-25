@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/pixel-art-banana-icon-32x32-vector-30731187.jpg">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
@@ -13,7 +12,7 @@
 
 
   <span>
-    <img style="width:300px;" src="images/logo.png" alt="">
+    <img  style="width:300px;" src="images/logo.png" alt="">
     <p>Welcome to dark souls themed memory game!</p>
     <p>Rules are simple.</p>
     <ul>
@@ -23,6 +22,7 @@
       <li>If they are same, continue!</li>
     </ul>
     <button id="start-btn" onclick="startGame()">START</button>
+    <audio id="song" src="audio/y2mate.com - Gwyn Lord of Cinder  Dark Souls Soundtrack.mp3.webm"></audio>
     <p style="margin: 15px;">REMEMBER! After choosing two cards, wait for the cards to turn(Pick max 2 cards at one move), otherwise game will refresh</p>
   </span>
 
@@ -30,68 +30,73 @@
     <!-- Main container -->
     <nav>
       <p id="moves">0 moves</p>
-      <p id="time">Time:</p>
+      <div id="mute-container" class="mute-container">
+        <img id="mute" src="images/mute.png" alt="">
+        <div id="volume-container" class="volume-container">
+          <img style="display: none;" id="volume" src="images/volume.png" alt="">
+        </div>
+      </div>
       <p id="score">Score: </p>
       <button  id="refresh-btn" onclick="refresh()">Refresh</button>
     </nav>
     <section>
       <!-- Game Table -->
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
       </div>
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
       </div>
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
       </div>
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
       </div>
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
       </div>
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
       </div>
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
       </div>
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
       </div>
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
       </div>
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
       </div>
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
       </div>
-      <div>
+      <div class="card-container">
         <figure>
           <img class="card" src="images/logo.png" alt="">
         </figure>
@@ -101,6 +106,12 @@
     </section>
 
   </main>
+
+  <article id="finish-container">
+    <p style="margin-bottom: 25px;">You finished the game, congratulations!</p>
+    <p id="moves-result">It took you </p>
+    <button onclick="playAgain()" id="play-again">Play again</button>
+  </article>
 
   <script src="script.js"></script>
 </body>
